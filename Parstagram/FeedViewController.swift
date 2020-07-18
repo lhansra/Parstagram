@@ -82,6 +82,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        }
     }
     
+    var posts = [PFObject]()
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -92,6 +94,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         query.findObjectsInBackground { (posts, error) in
             if posts != nil {
                 self.posts = posts!
+                print(self.posts)
                 self.tableView.reloadData()
             }
         }
@@ -99,8 +102,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
 
     @IBOutlet weak var tableView: UITableView!
-    
-    var posts = [PFObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
